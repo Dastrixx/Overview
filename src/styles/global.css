@@ -222,55 +222,6 @@ p {
   background: var(--color-surface-soft);
 }
 
-
-.about-box,
-.experience-card {
-  padding: 28px;
-}
-
-.about-box p + p {
-  margin-top: 14px;
-}
-
-.experience-list {
-  display: grid;
-  gap: 18px;
-}
-
-.experience-card {
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-}
-
-.experience-card__meta {
-  margin: 10px 0 16px;
-  color: var(--color-primary);
-  font-weight: 600;
-}
-
-.experience-card__list {
-  display: grid;
-  gap: 10px;
-}
-
-.experience-card__list li {
-  position: relative;
-  padding-left: 18px;
-}
-
-.experience-card__list li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 10px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--color-primary);
-}
-
 .skills-grid,
 .projects-grid {
   display: grid;
@@ -288,8 +239,7 @@ p {
 .skill-card,
 .project-card,
 .contact-box,
-.seo-box,
-.about-box {
+.seo-box {
   border: 1px solid var(--color-border);
   background: var(--color-surface);
   border-radius: var(--radius-md);

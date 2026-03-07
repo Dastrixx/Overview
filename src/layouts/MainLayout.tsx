@@ -10,9 +10,7 @@ export default function MainLayout({ children }: { children: ReactNode }) {
             My CV
           </a>
           <nav className="site-nav" aria-label="Основная навигация">
-            <a href="#about">О себе</a>
             <a href="#skills">Навыки</a>
-            <a href="#experience">Опыт</a>
             <a href="#seo">SEO/Реклама</a>
             <a href="#projects">Проекты</a>
             <a href="#contacts">Контакты</a>
