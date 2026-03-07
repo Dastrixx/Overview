@@ -1,17 +1,19 @@
 import ThemeToggle from "@/components/ThemeToggle/ThemeToggle";
 import { ReactNode } from "react";
 
-
 export default function MainLayout({ children }: { children: ReactNode }) {
   return (
     <div className="app-shell">
       <header className="site-header">
         <div className="container site-header__inner">
-          <div className="site-logo">My App</div>
-          <nav className="site-nav">
-            <a href="/">Главная</a>
-            <a href="/about">О нас</a>
-            <a href="/contacts">Контакты</a>
+          <a href="#home" className="site-logo">
+            My CV
+          </a>
+          <nav className="site-nav" aria-label="Основная навигация">
+            <a href="#skills">Навыки</a>
+            <a href="#seo">SEO/Реклама</a>
+            <a href="#projects">Проекты</a>
+            <a href="#contacts">Контакты</a>
           </nav>
           <ThemeToggle />
         </div>
@@ -21,7 +23,7 @@ export default function MainLayout({ children }: { children: ReactNode }) {
 
       <footer className="site-footer">
         <div className="container">
-          <p>© 2026 My App</p>
+          <p>© 2026 My CV</p>
         </div>
       </footer>
     </div>
