@@ -1,16 +1,59 @@
-# React + Vite
+# Personal Portfolio / Личное портфолио
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Amir Rakhimkulov — Frontend Developer**
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## EN
 
-## React Compiler
+This repository contains the source code of my personal portfolio.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The project is built as an interactive web application where I present information about myself, my experience, skills, and projects.
 
-## Expanding the ESLint configuration
+Instead of a traditional static CV, this portfolio demonstrates my frontend development skills through interface design, animations, and modern web technologies.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### What this project includes
+
+- information about me
+- professional experience
+- technology stack
+- selected projects
+- UI experiments and animations
+
+All detailed information is presented directly inside the application.
+
+### Purpose of the project
+
+This project serves as:
+
+- an interactive CV
+- a developer portfolio
+- a playground for experimenting with modern frontend technologies and UI animations
+
+---
+
+## RU
+
+Этот репозиторий содержит исходный код моего личного портфолио.
+
+Проект представляет собой интерактивное веб-приложение, в котором я рассказываю о себе, своем опыте, навыках и проектах.
+
+Вместо обычного статического резюме портфолио демонстрирует мои навыки фронтенд-разработки через интерфейс, анимации и современные веб-технологии.
+
+### Что есть в проекте
+
+- информация обо мне
+- профессиональный опыт
+- используемые технологии
+- реализованные проекты
+- эксперименты с интерфейсами и анимациями
+
+Все подробности представлены непосредственно внутри самого приложения.
+
+### Цель проекта
+
+Этот проект используется как:
+
+- интерактивное резюме
+- портфолио разработчика
+- пространство для экспериментов с современными frontend-технологиями и анимациями
