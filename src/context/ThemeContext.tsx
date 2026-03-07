@@ -1,11 +1,19 @@
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { Theme, ThemeContextType } from "@/types/theme";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+  ReactNode,
+} from "react";
 
-const ThemeContext = createContext(null);
+const ThemeContext = createContext<ThemeContextType | null>(null);
 
 const THEME_KEY = "app-theme";
 
-export function ThemeProvider({ children }) {
-  const getInitialTheme = () => {
+export function ThemeProvider({ children }: { children: ReactNode }) {
+  const getInitialTheme = (): Theme => {
     const savedTheme = localStorage.getItem(THEME_KEY);
 
     if (savedTheme === "light" || savedTheme === "dark") {
@@ -17,7 +25,7 @@ export function ThemeProvider({ children }) {
     return prefersDark ? "dark" : "light";
   };
 
-  const [theme, setTheme] = useState(getInitialTheme);
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -27,7 +35,7 @@ export function ThemeProvider({ children }) {
   useEffect(() => {
     const media = window.matchMedia("(prefers-color-scheme: dark)");
 
-    const handleChange = (event) => {
+    const handleChange = (event: MediaQueryListEvent) => {
       const savedTheme = localStorage.getItem(THEME_KEY);
 
       if (!savedTheme) {
@@ -59,7 +67,7 @@ export function ThemeProvider({ children }) {
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 }
 
-export function useTheme() {
+export function useTheme(): ThemeContextType {
   const context = useContext(ThemeContext);
 
   if (!context) {

@@ -1,6 +1,8 @@
 import ThemeToggle from "@/components/ThemeToggle/ThemeToggle";
+import { ReactNode } from "react";
 
-export default function MainLayout({ children }) {
+
+export default function MainLayout({ children }: { children: ReactNode }) {
   return (
     <div className="app-shell">
       <header className="site-header">
