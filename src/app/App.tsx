@@ -1,12 +1,10 @@
 import MainLayout from "@/layouts/MainLayout";
-import Home from "@/pages/Home";
+import HomePage from "@/pages/Home/HomePage";
 
-function App() {
+export default function App() {
   return (
     <MainLayout>
-      <Home />
+      <HomePage />
     </MainLayout>
   );
 }
-
-export default App;
