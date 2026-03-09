@@ -1,6 +1,7 @@
 html {
-  scroll-snap-type: y proximity;
+  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
 }
 html,
 body,
@@ -44,7 +45,7 @@ select {
   margin: 0 auto;
 }
 
-scroll-margin-top .app-shell {
+.app-shell {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -52,6 +53,17 @@ scroll-margin-top .app-shell {
 
 .site-main {
   flex: 1;
+}
+
+.site-main > section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  scroll-margin-top: var(--header-height);
+}
+
+.section {
+  min-height: calc(100vh - var(--header-height));
+  padding: 96px 0;
 }
 
 h1,
@@ -97,9 +109,9 @@ p {
   }
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 1023px) {
   html {
-    scroll-snap-type: y mandatory;
+    scroll-snap-type: y proximity;
   }
 }
 
