@@ -1,15 +1,51 @@
 import "./About.css";
 
+const cards = [
+  {
+    number: "01",
+    title: "Интерфейсы",
+    text: "Собираю чистые и понятные UI для сложных продуктов и внутренних систем.",
+  },
+  {
+    number: "02",
+    title: "Логика",
+    text: "Работаю с формами, таблицами, состоянием приложения, API и бизнес-процессами.",
+  },
+  {
+    number: "03",
+    title: "Подход",
+    text: "Думаю про архитектуру, производительность и удобство дальнейшей разработки.",
+  },
+];
+
 export default function About() {
   return (
-    <section id="about" className="about section">
-      <div className="container">
-        <h2 className="section-title">Обо мне</h2>
-        <p className="section-text">
-          Я frontend разработчик, основной стек — JavaScript и React. Работаю с
-          интерфейсами, формами, таблицами, API, архитектурой компонентов и адаптивной
-          вёрсткой.
-        </p>
+    <section id="about" className="about">
+      <div className="container about__container">
+        <div className="about__intro">
+          <span className="about__label">Обо мне</span>
+
+          <h2 className="about__title">
+            Делаю интерфейсы, которые удобно использовать,
+            <br />
+            легко развивать и приятно показывать.
+          </h2>
+
+          <p className="about__text">
+            Мне интересны продукты, где frontend — это не просто визуальный слой, а
+            полноценный рабочий инструмент для бизнеса и пользователей.
+          </p>
+        </div>
+
+        <div className="about__cards">
+          {cards.map((card) => (
+            <article key={card.number} className="aboutCard">
+              <span className="aboutCard__number">{card.number}</span>
+              <h3 className="aboutCard__title">{card.title}</h3>
+              <p className="aboutCard__text">{card.text}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

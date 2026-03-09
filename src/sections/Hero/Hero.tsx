@@ -15,7 +15,7 @@ export default function Hero() {
           <p className="hero__eyebrow hero__reveal">Frontend Developer</p>
 
           <h1 className="hero__title hero__reveal hero__reveal--delay1">
-            Амир Рахимкулов
+            Amirkhan Rakymkulov
             <span className="hero__titleAccent"> React / UI / Motion</span>
           </h1>
 
@@ -46,7 +46,12 @@ export default function Hero() {
 
         <div className="hero__right hero__reveal hero__reveal--delay2">
           <div className="heroCardWrap">
-            <div className="heroCard" role="button" tabIndex={0} aria-label="Flip hero card">
+            <div
+              className="heroCard"
+              role="button"
+              tabIndex={0}
+              aria-label="Flip hero card"
+            >
               <div className="heroCard__inner">
                 <div className="heroCard__face heroCard__face--front">
                   <div className="heroCard__top">
@@ -82,15 +87,17 @@ export default function Hero() {
                   </div>
                 </div>
 
-                <div className="heroCard__face heroCard__face--back">
+                {/* <div className="heroCard__face heroCard__face--back">
                   <p className="heroCard__backTitle">Как я работаю</p>
                   <ul className="heroCard__backList">
                     <li>Проектирую UI и поведение до начала верстки.</li>
                     <li>Делаю плавные анимации без перегруза.</li>
                     <li>Слежу за чистотой архитектуры и DX.</li>
                   </ul>
-                  <p className="heroCard__backHint">Наведи / тапни, чтобы перевернуть обратно</p>
-                </div>
+                  <p className="heroCard__backHint">
+                    Наведи / тапни, чтобы перевернуть обратно
+                  </p>
+                </div> */}
               </div>
             </div>
 

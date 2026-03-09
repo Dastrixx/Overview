@@ -1,7 +1,7 @@
 html {
+  scroll-snap-type: y proximity;
   scroll-behavior: smooth;
 }
-
 html,
 body,
 #root {
@@ -44,11 +44,7 @@ select {
   margin: 0 auto;
 }
 
-.section {
-  padding: 80px 0;
-}
-
-.app-shell {
+scroll-margin-top .app-shell {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -98,6 +94,12 @@ p {
     animation: none !important;
     transition: none !important;
     scroll-behavior: auto !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  html {
+    scroll-snap-type: y mandatory;
   }
 }
 
