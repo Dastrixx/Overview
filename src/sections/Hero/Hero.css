@@ -170,8 +170,37 @@
   position: relative;
 }
 
+.heroCardWrap {
+  position: relative;
+  perspective: 1400px;
+}
+
 .heroCard {
   position: relative;
+  min-height: 368px;
+  border-radius: 28px;
+  transform-style: preserve-3d;
+  animation: heroCardFloat 6s ease-in-out infinite;
+  cursor: pointer;
+}
+
+.heroCard__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s ease;
+  transform-style: preserve-3d;
+}
+
+.heroCard:hover .heroCard__inner,
+.heroCard:focus-visible .heroCard__inner,
+.heroCard:active .heroCard__inner {
+  transform: rotateY(180deg);
+}
+
+.heroCard__face {
+  position: absolute;
+  inset: 0;
   padding: 18px;
   border-radius: 28px;
   border: 1px solid var(--color-border);
@@ -184,8 +213,39 @@
     0 24px 80px rgba(0, 0, 0, 0.12),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(16px);
-  transform: perspective(1200px) rotateY(-8deg) rotateX(4deg);
-  animation: heroCardFloat 6s ease-in-out infinite;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.heroCard__face--front {
+  transform: rotateY(0deg);
+}
+
+.heroCard__face--back {
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+}
+
+.heroCard__backTitle {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.heroCard__backList {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+.heroCard__body--back {
+  flex: 1;
 }
 
 .heroCard__top {
@@ -397,7 +457,7 @@
   }
 
   .heroCard {
-    transform: none;
+    min-height: 340px;
   }
 }
 
@@ -417,6 +477,10 @@
 
   .heroCard__stats {
     grid-template-columns: 1fr;
+  }
+
+  .heroCard__backTitle {
+    font-size: 18px;
   }
 
   .heroFloating--two {
