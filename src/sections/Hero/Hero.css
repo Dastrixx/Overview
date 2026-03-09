@@ -223,15 +223,14 @@
 
 .heroCard__face--back {
   transform: rotateY(180deg);
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  align-content: center;
+  gap: 16px;
 }
 
 .heroCard__backTitle {
   margin: 0;
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--color-text);
+  font-size: 26px;
 }
 
 .heroCard__backList {
@@ -239,13 +238,13 @@
   padding-left: 18px;
   display: grid;
   gap: 8px;
-  font-size: 14px;
-  line-height: 1.5;
   color: var(--color-text-secondary);
 }
 
-.heroCard__body--back {
-  flex: 1;
+.heroCard__backHint {
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-primary);
 }
 
 .heroCard__top {

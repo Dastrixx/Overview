@@ -46,7 +46,7 @@ export default function Hero() {
 
         <div className="hero__right hero__reveal hero__reveal--delay2">
           <div className="heroCardWrap">
-            <div className="heroCard" aria-label="Flip hero card">
+            <div className="heroCard" role="button" tabIndex={0} aria-label="Flip hero card">
               <div className="heroCard__inner">
                 <div className="heroCard__face heroCard__face--front">
                   <div className="heroCard__top">
@@ -83,39 +83,13 @@ export default function Hero() {
                 </div>
 
                 <div className="heroCard__face heroCard__face--back">
-                  <div className="heroCard__top">
-                    <span className="heroCard__dot heroCard__dot--red" />
-                    <span className="heroCard__dot heroCard__dot--yellow" />
-                    <span className="heroCard__dot heroCard__dot--green" />
-                  </div>
-
-                  <div className="heroCard__body heroCard__body--back">
-                    <div className="heroCard__code heroCard__code--back">
-                      <p className="heroCard__backTitle">Workflow</p>
-                      <ul className="heroCard__backList">
-                        <li>UI прототип и структура экрана</li>
-                        <li>Верстка компонентов + анимации</li>
-                        <li>Полировка UX и производительности</li>
-                      </ul>
-                    </div>
-
-                    <div className="heroCard__stats">
-                      <div className="heroStat">
-                        <span className="heroStat__label">Approach</span>
-                        <strong className="heroStat__value">Design → Code</strong>
-                      </div>
-
-                      <div className="heroStat">
-                        <span className="heroStat__label">Priority</span>
-                        <strong className="heroStat__value">Smooth UX</strong>
-                      </div>
-
-                      <div className="heroStat">
-                        <span className="heroStat__label">Quality</span>
-                        <strong className="heroStat__value">Clean Architecture</strong>
-                      </div>
-                    </div>
-                  </div>
+                  <p className="heroCard__backTitle">Как я работаю</p>
+                  <ul className="heroCard__backList">
+                    <li>Проектирую UI и поведение до начала верстки.</li>
+                    <li>Делаю плавные анимации без перегруза.</li>
+                    <li>Слежу за чистотой архитектуры и DX.</li>
+                  </ul>
+                  <p className="heroCard__backHint">Наведи / тапни, чтобы перевернуть обратно</p>
                 </div>
               </div>
             </div>
