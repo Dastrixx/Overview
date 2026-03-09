@@ -478,6 +478,10 @@
     grid-template-columns: 1fr;
   }
 
+  .heroCard__backTitle {
+    font-size: 18px;
+  }
+
   .heroFloating--two {
     left: 10px;
     bottom: -12px;
