@@ -20,31 +20,33 @@ const cards = [
 
 export default function About() {
   return (
-    <section id="about" className="about">
-      <div className="container about__container">
-        <div className="about__intro">
-          <span className="about__label">Обо мне</span>
+    <section className="page-section about">
+      <div className="about__inner">
+        <div className="container about__container">
+          <div className="about__intro">
+            <span className="about__label">Обо мне</span>
 
-          <h2 className="about__title">
-            Делаю интерфейсы, которые удобно использовать,
-            <br />
-            легко развивать и приятно показывать.
-          </h2>
+            <h2 className="about__title">
+              Делаю интерфейсы, которые удобно использовать,
+              <br />
+              легко развивать и приятно показывать.
+            </h2>
 
-          <p className="about__text">
-            Мне интересны продукты, где frontend — это не просто визуальный слой, а
-            полноценный рабочий инструмент для бизнеса и пользователей.
-          </p>
-        </div>
+            <p className="about__text">
+              Мне интересны продукты, где frontend — это не просто визуальный слой, а
+              полноценный рабочий инструмент для бизнеса и пользователей.
+            </p>
+          </div>
 
-        <div className="about__cards">
-          {cards.map((card) => (
-            <article key={card.number} className="aboutCard">
-              <span className="aboutCard__number">{card.number}</span>
-              <h3 className="aboutCard__title">{card.title}</h3>
-              <p className="aboutCard__text">{card.text}</p>
-            </article>
-          ))}
+          <div className="about__cards">
+            {cards.map((card) => (
+              <article key={card.number} className="aboutCard">
+                <span className="aboutCard__number">{card.number}</span>
+                <h3 className="aboutCard__title">{card.title}</h3>
+                <p className="aboutCard__text">{card.text}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>

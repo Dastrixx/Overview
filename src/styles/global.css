@@ -1,8 +1,9 @@
-html {
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-  scroll-padding-top: var(--header-height);
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
+
 html,
 body,
 #root {
@@ -10,6 +11,7 @@ body,
 }
 
 body {
+  margin: 0;
   font-family:
     Inter,
     system-ui,
@@ -26,6 +28,28 @@ body {
     color var(--transition-default);
 }
 
+.page-section {
+  min-height: 100dvh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.page-section__inner {
+  min-height: 100dvh;
+  padding: 80px 0;
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  width: min(var(--container-width), calc(100% - var(--container-padding) * 2));
+  margin: 0 auto;
+}
+
+.section {
+  padding: 0;
+}
+
 a,
 button,
 input,
@@ -40,11 +64,6 @@ select {
     transform var(--transition-default);
 }
 
-.container {
-  width: min(var(--container-width), calc(100% - var(--container-padding) * 2));
-  margin: 0 auto;
-}
-
 .app-shell {
   min-height: 100vh;
   display: flex;
@@ -53,17 +72,6 @@ select {
 
 .site-main {
   flex: 1;
-}
-
-.site-main > section {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  scroll-margin-top: var(--header-height);
-}
-
-.section {
-  min-height: calc(100vh - var(--header-height));
-  padding: 96px 0;
 }
 
 h1,
@@ -87,48 +95,47 @@ p {
 }
 
 .scroll-reveal {
-  animation: fadeSlideUp 0.7s ease both;
-}
-
-@keyframes fadeSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(22px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  animation: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-snap-type: none !important;
+  }
+
   * {
     animation: none !important;
     transition: none !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-@media (max-width: 1023px) {
-  html {
-    scroll-snap-type: y proximity;
   }
 }
 
 @media (max-width: 992px) {
-  .section {
+  .page-section__inner {
     padding: 64px 0;
   }
 }
 
 @media (max-width: 768px) {
-  .section {
+  html {
+    scroll-snap-type: none;
+  }
+
+  .page-section,
+  .page-section__inner {
+    min-height: auto;
+  }
+
+  .page-section {
+    scroll-snap-align: none;
+  }
+
+  .page-section__inner {
     padding: 52px 0;
   }
 }
 
 @media (max-width: 480px) {
-  .section {
+  .page-section__inner {
     padding: 40px 0;
   }
 }

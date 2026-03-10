@@ -1,7 +1,7 @@
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 0px 0 90px;
+
   min-height: calc(100vh - var(--header-height));
   display: flex;
   align-items: center;
