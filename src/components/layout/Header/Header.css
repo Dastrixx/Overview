@@ -6,7 +6,6 @@
   border-bottom: 1px solid var(--color-border);
   background: color-mix(in srgb, var(--color-bg) 84%, transparent);
   backdrop-filter: blur(12px);
-  overflow: hidden;
   isolation: isolate;
 }
 
@@ -308,6 +307,7 @@
   .site-header {
     height: auto;
     padding: 10px 0;
+    overflow: visible;
   }
 
   .site-header__inner {
