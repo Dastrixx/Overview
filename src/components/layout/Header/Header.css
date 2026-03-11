@@ -58,6 +58,41 @@
   flex-shrink: 0;
 }
 
+.site-menuButton {
+  display: none;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-surface) 84%, transparent);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.site-menuButton span {
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--color-text);
+  transform-origin: center;
+}
+
+.site-menuButton--open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.site-menuButton--open span:nth-child(2) {
+  opacity: 0;
+}
+
+.site-menuButton--open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
 /* FLOW */
 
 .site-header__flow {
@@ -272,25 +307,63 @@
 @media (max-width: 768px) {
   .site-header {
     height: auto;
-    padding: 14px 0;
+    padding: 10px 0;
   }
 
   .site-header__inner {
     height: auto;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .site-menuButton {
+    display: inline-flex;
   }
 
   .site-nav {
-    width: 100%;
-    order: 3;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 10px 14px;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    display: grid;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 16px;
+    border: 1px solid var(--color-border);
+    background: color-mix(in srgb, var(--color-bg) 95%, transparent);
+    backdrop-filter: blur(16px);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    pointer-events: none;
+  }
+
+  .site-nav--open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .site-nav__link {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--color-surface) 75%, transparent);
   }
 
   .site-header__flow::after {
     opacity: 0.4;
+  }
+
+  .site-logo {
+    font-size: 18px;
+  }
+
+  .site-header__toggle {
+    justify-self: end;
   }
 
   .site-header__floatIcon {
@@ -331,6 +404,16 @@
 }
 
 @media (max-width: 520px) {
+  .site-nav {
+    top: calc(100% + 6px);
+    padding: 10px;
+  }
+
+  .site-nav__link {
+    font-size: 14px;
+    padding: 9px 10px;
+  }
+
   .site-header__flow::after {
     display: none;
   }

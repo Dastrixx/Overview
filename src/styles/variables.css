@@ -46,3 +46,16 @@ html[data-theme="dark"] {
   --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.28);
   --shadow-md: 0 12px 36px rgba(0, 0, 0, 0.4);
 }
+
+@media (max-width: 768px) {
+  :root {
+    --container-padding: 16px;
+    --header-height: 72px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --container-padding: 12px;
+  }
+}
