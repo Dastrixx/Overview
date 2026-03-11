@@ -78,6 +78,7 @@ function createFlowIcons(total: number) {
 
 export default function Header() {
   const [iconCount, setIconCount] = useState(56);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const updateIconCount = () => {
@@ -103,6 +104,17 @@ export default function Header() {
     window.addEventListener("resize", updateIconCount);
 
     return () => window.removeEventListener("resize", updateIconCount);
+  }, []);
+
+  useEffect(() => {
+    const closeMenuOnDesktop = () => {
+      if (window.innerWidth > 768) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", closeMenuOnDesktop);
+    return () => window.removeEventListener("resize", closeMenuOnDesktop);
   }, []);
 
   const flowIcons = useMemo(() => createFlowIcons(iconCount), [iconCount]);
@@ -137,9 +149,31 @@ export default function Header() {
           Amir.dev
         </a>
 
-        <nav className="site-nav" aria-label="Основная навигация">
+        <button
+          type="button"
+          className={`site-menuButton ${isMobileMenuOpen ? "site-menuButton--open" : ""}`}
+          aria-label={isMobileMenuOpen ? "Закрыть меню" : "Открыть меню"}
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="site-navigation"
+          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+
+        <nav
+          id="site-navigation"
+          className={`site-nav ${isMobileMenuOpen ? "site-nav--open" : ""}`}
+          aria-label="Основная навигация"
+        >
           {navItems.map((item) => (
-            <a key={item.href} href={item.href} className="site-nav__link">
+            <a
+              key={item.href}
+              href={item.href}
+              className="site-nav__link"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
               {item.label}
             </a>
           ))}

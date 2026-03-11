@@ -304,3 +304,19 @@
     border-radius: 16px;
   }
 }
+
+@media (max-width: 480px) {
+  .contacts__title {
+    line-height: 1.04;
+  }
+
+  .contactsCard {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .contactsCard__arrow {
+    width: 34px;
+    height: 34px;
+  }
+}

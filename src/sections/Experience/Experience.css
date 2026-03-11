@@ -441,3 +441,13 @@
     font-size: 24px;
   }
 }
+
+@media (max-width: 480px) {
+  .experienceDetails__company {
+    font-size: 22px;
+  }
+
+  .experienceDetails__description {
+    font-size: 15px;
+  }
+}
