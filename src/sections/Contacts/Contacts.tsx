@@ -4,19 +4,19 @@ import { Mail, Github, Send, ArrowUpRight } from "lucide-react";
 const contacts = [
   {
     title: "Email",
-    value: "yourmail@example.com",
-    href: "mailto:yourmail@example.com",
+    value: "stricklex@gmail.com",
+    href: "#",
     icon: Mail,
   },
   {
     title: "GitHub",
-    value: "github.com/yourusername",
+    value: "Dastrixx",
     href: "https://github.com/dastrixx",
     icon: Github,
   },
   {
     title: "Telegram",
-    value: "@yourusername",
+    value: "@ar_titan",
     href: "https://t.me/ar_titan",
     icon: Send,
   },

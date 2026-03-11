@@ -30,8 +30,6 @@ body {
 
 .page-section {
   min-height: 100dvh;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
 }
 
 .page-section__inner {
