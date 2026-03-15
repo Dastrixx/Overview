@@ -218,7 +218,7 @@
 
 .contactsCard__value {
   margin-top: 8px;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.35;
   font-weight: 500;
   color: var(--color-text);
@@ -303,4 +303,56 @@
     height: 46px;
     border-radius: 16px;
   }
+}
+
+@media (max-width: 480px) {
+  .contacts__title {
+    line-height: 1.04;
+  }
+
+  .contactsCard {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .contactsCard__arrow {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+.contactsCard__copiedBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  color: #7dd3fc;
+  background: rgba(125, 211, 252, 0.12);
+  border: 1px solid rgba(125, 211, 252, 0.22);
+  opacity: 0;
+  transform: translateY(4px) scale(0.96);
+  pointer-events: none;
+  transition:
+    opacity 0.24s ease,
+    transform 0.24s ease;
+}
+
+.contactsCard__copiedBadge.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.contactsCard--copied {
+  border-color: rgba(125, 211, 252, 0.34);
+  background: rgba(125, 211, 252, 0.05);
+  box-shadow: 0 0 0 1px rgba(125, 211, 252, 0.08);
+}
+
+.contactsCard--copied .contactsCard__icon,
+.contactsCard--copied .contactsCard__arrow {
+  color: #7dd3fc;
 }

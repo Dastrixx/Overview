@@ -52,21 +52,6 @@ const skillsData = [
   },
 ];
 
-const stack = [
-  "JavaScript",
-  "TypeScript",
-  "React",
-  "Vite",
-  "Ant Design",
-  "React Hook Form",
-  "REST API",
-  "HTML",
-  "CSS",
-  "Responsive UI",
-  "Animations",
-  "UI Architecture",
-];
-
 export default function Skills() {
   const [activeId, setActiveId] = useState(skillsData[0].id);
   const [spot, setSpot] = useState({ x: 50, y: 50 });
@@ -189,14 +174,6 @@ export default function Skills() {
                 </div>
               </div>
             </div>
-          </div>
-
-          <div className="skills__chips">
-            {stack.map((item) => (
-              <span key={item} className="skills__chip">
-                {item}
-              </span>
-            ))}
           </div>
         </div>
       </div>

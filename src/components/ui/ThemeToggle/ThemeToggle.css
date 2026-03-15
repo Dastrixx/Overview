@@ -23,14 +23,11 @@
 }
 
 .theme-toggle__thumb {
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--color-primary);
-  transition: transform var(--transition-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
 }
 
 .theme-toggle__thumb.is-dark {

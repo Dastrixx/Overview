@@ -486,7 +486,7 @@
   }
 
   .skills__title {
-    font-size: clamp(32px, 10vw, 46px);
+    font-size: 10px;
     line-height: 1.04;
   }
 
@@ -537,5 +537,16 @@
   .skillItem {
     opacity: 1;
     transform: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .skills__list {
+    grid-template-columns: 1fr;
+  }
+
+  .skillsPreview__orb {
+    width: 160px;
+    height: 160px;
   }
 }
