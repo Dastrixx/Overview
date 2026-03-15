@@ -1,6 +1,19 @@
 import "./Hero.css";
 
-const techStack = ["React", "TypeScript", "Vite", "UI/UX", "Animations"];
+const techStack = [
+  "JavaScript",
+  "TypeScript",
+  "React",
+  "Vite",
+  "Ant Design",
+  "React Hook Form",
+  "REST API",
+  "HTML",
+  "CSS",
+  "Responsive UI",
+  "Animations",
+  "UI Architecture",
+];
 
 export default function Hero() {
   return (
@@ -27,11 +40,7 @@ export default function Hero() {
             </p>
 
             <div className="hero__actions">
-              <a href="#projects" className="hero__button">
-                Смотреть проекты
-              </a>
-
-              <a href="#contacts" className="hero__button hero__button--ghost">
+              <a href="#contacts" className="hero__button">
                 Связаться
               </a>
             </div>

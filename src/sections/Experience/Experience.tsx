@@ -37,7 +37,7 @@ const experience = [
 ];
 
 export default function Experience() {
-  const [activeId, setActiveId] = useState(null);
+  const [activeId, setActiveId] = useState(experience[0].id);
 
   const activeItem = experience.find((item) => item.id === activeId) ?? null;
 
@@ -53,10 +53,7 @@ export default function Experience() {
   }, []);
 
   return (
-    <section
-      id="experience"
-      className={`experience ${activeItem ? "experience--expanded" : ""}`}
-    >
+    <section id="experience" className="experience">
       <div className="experience__ambient experience__ambient--one" />
       <div className="experience__ambient experience__ambient--two" />
 
@@ -102,11 +99,10 @@ export default function Experience() {
               return (
                 <motion.article
                   key={item.id}
-                  layoutId={`exp-card-${item.id}`}
                   className={`expCard ${isActive ? "expCard--active" : ""}`}
                   onClick={() => setActiveId(item.id)}
-                  whileHover={{ y: -6 }}
-                  transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <div className="expCard__top">
                     <span className="expCard__period">{item.period}</span>
@@ -124,56 +120,56 @@ export default function Experience() {
             })}
           </div>
 
-          <AnimatePresence mode="wait">
-            {activeItem && (
-              <motion.div
-                className="experienceDetails"
-                initial={{ opacity: 0, y: 18 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 18 }}
-                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              >
+          <div className="experience__detailsCol">
+            <AnimatePresence mode="wait">
+              {activeItem && (
                 <motion.div
-                  layoutId={`exp-card-${activeItem.id}`}
-                  className="experienceDetails__card"
+                  key={activeItem.id}
+                  className="experienceDetails"
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 14 }}
+                  transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <button
-                    type="button"
-                    className="experienceDetails__close"
-                    onClick={() => setActiveId(null)}
-                    aria-label="Закрыть"
-                  >
-                    <X size={18} strokeWidth={2.2} />
-                  </button>
+                  <div className="experienceDetails__card">
+                    <button
+                      type="button"
+                      className="experienceDetails__close"
+                      onClick={() => setActiveId(null)}
+                      aria-label="Закрыть"
+                    >
+                      <X size={18} strokeWidth={2.2} />
+                    </button>
 
-                  <div className="experienceDetails__meta">
-                    <span className="experienceBadge">{activeItem.duration}</span>
-                    <span className="experienceBadge experienceBadge--soft">
-                      Career step
-                    </span>
-                  </div>
-
-                  <p className="experienceDetails__period">{activeItem.period}</p>
-
-                  <h3 className="experienceDetails__company">{activeItem.company}</h3>
-
-                  <p className="experienceDetails__role">{activeItem.role}</p>
-
-                  <p className="experienceDetails__description">
-                    {activeItem.description}
-                  </p>
-
-                  <div className="experienceDetails__stack">
-                    {activeItem.stack.map((tech) => (
-                      <span key={tech} className="experienceChip">
-                        {tech}
+                    <div className="experienceDetails__meta">
+                      <span className="experienceBadge">{activeItem.duration}</span>
+                      <span className="experienceBadge experienceBadge--soft">
+                        Career step
                       </span>
-                    ))}
+                    </div>
+
+                    <p className="experienceDetails__period">{activeItem.period}</p>
+
+                    <h3 className="experienceDetails__company">{activeItem.company}</h3>
+
+                    <p className="experienceDetails__role">{activeItem.role}</p>
+
+                    <p className="experienceDetails__description">
+                      {activeItem.description}
+                    </p>
+
+                    <div className="experienceDetails__stack">
+                      {activeItem.stack.map((tech) => (
+                        <span key={tech} className="experienceChip">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </section>

@@ -1,5 +1,6 @@
+import { ForwardRefExoticComponent, MouseEvent, RefAttributes, useState } from "react";
 import "./Contacts.css";
-import { Mail, Github, Send, ArrowUpRight } from "lucide-react";
+import { Mail, Github, Send, ArrowUpRight, Check, LucideProps } from "lucide-react";
 
 const contacts = [
   {
@@ -7,6 +8,7 @@ const contacts = [
     value: "stricklex@gmail.com",
     href: "#",
     icon: Mail,
+    copy: true,
   },
   {
     title: "GitHub",
@@ -23,6 +25,48 @@ const contacts = [
 ];
 
 export default function Contacts() {
+  const [copied, setCopied] = useState("");
+
+  const handleClick = async (
+    e: MouseEvent<HTMLAnchorElement, MouseEvent>,
+    item:
+      | {
+          title: string;
+          value: string;
+          href: string;
+          icon: ForwardRefExoticComponent<
+            Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
+          >;
+          copy: boolean;
+        }
+      | {
+          title: string;
+          value: string;
+          href: string;
+          icon: ForwardRefExoticComponent<
+            Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
+          >;
+          copy?: undefined;
+        }
+  ) => {
+    if (!item.copy) {
+      return;
+    }
+
+    e.preventDefault();
+
+    try {
+      await navigator.clipboard.writeText(item.value);
+      setCopied(item.title);
+
+      setTimeout(() => {
+        setCopied("");
+      }, 1800);
+    } catch (error) {
+      console.error("Ошибка копирования:", error);
+    }
+  };
+
   return (
     <section id="contacts" className="contacts">
       <div className="contacts__ambient contacts__ambient--one" />
@@ -51,41 +95,68 @@ export default function Contacts() {
             <span className="contacts__badge">Available for work</span>
 
             <h3 className="contacts__panelTitle">
-              Давай соберём что-то
-              <span> действительно сильное.</span>
+              Открыт к<span> интересным продуктам</span>
             </h3>
 
             <p className="contacts__panelText">
-              React, UI, анимации, продуктовые интерфейсы, сложные формы, таблицы и
-              аккуратная реализация деталей.
+              React, архитектура интерфейсов, сложные формы, таблицы данных и продуманные
+              пользовательские сценарии.
             </p>
           </div>
 
           <div className="contacts__list">
-            {contacts.map(({ title, value, href, icon: Icon }) => (
-              <a
-                key={title}
-                href={href}
-                className="contactsCard"
-                target={href.startsWith("http") ? "_blank" : undefined}
-                rel={href.startsWith("http") ? "noreferrer" : undefined}
-              >
-                <div className="contactsCard__left">
-                  <div className="contactsCard__icon">
-                    <Icon size={20} strokeWidth={1.9} />
+            {contacts.map((item) => {
+              const Icon = item.icon;
+              const isCopied = copied === item.title;
+              const isExternal = item.href.startsWith("http");
+
+              return (
+                <a
+                  key={item.title}
+                  href={item.href}
+                  className={`contactsCard ${isCopied ? "contactsCard--copied" : ""}`}
+                  onClick={(e) => handleClick(e, item)}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noreferrer" : undefined}
+                >
+                  <div className="contactsCard__left">
+                    <div className="contactsCard__icon">
+                      {isCopied ? (
+                        <Check size={20} strokeWidth={2.2} />
+                      ) : (
+                        <Icon size={20} strokeWidth={1.9} />
+                      )}
+                    </div>
+
+                    <div className="contactsCard__content">
+                      <div className="contactsCard__label">{item.title}</div>
+
+                      <div className="contactsCard__valueWrap">
+                        <div className="contactsCard__value">{item.value}</div>
+
+                        {item.copy && (
+                          <span
+                            className={`contactsCard__copiedBadge ${
+                              isCopied ? "is-visible" : ""
+                            }`}
+                          >
+                            Скопировано
+                          </span>
+                        )}
+                      </div>
+                    </div>
                   </div>
 
-                  <div className="contactsCard__content">
-                    <div className="contactsCard__label">{title}</div>
-                    <div className="contactsCard__value">{value}</div>
+                  <div className="contactsCard__arrow">
+                    {isCopied ? (
+                      <Check size={18} strokeWidth={2.4} />
+                    ) : (
+                      <ArrowUpRight size={18} strokeWidth={2} />
+                    )}
                   </div>
-                </div>
-
-                <div className="contactsCard__arrow">
-                  <ArrowUpRight size={18} strokeWidth={2} />
-                </div>
-              </a>
-            ))}
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>
