@@ -103,7 +103,7 @@
 
 .contacts__intro {
   padding: 6px 6px 28px;
-  text-align: center;
+  text-align: left;
 }
 
 .contacts__badge {
@@ -135,8 +135,8 @@
 }
 
 .contacts__panelText {
-  max-width: 700px;
-  margin: 16px auto 0;
+  max-width: 46ch;
+  margin: 16px 0 0;
   font-size: 16px;
   line-height: 1.7;
   color: color-mix(in srgb, var(--color-text) 62%, transparent);
@@ -144,7 +144,7 @@
 
 .contacts__list {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 18px;
 }
 
@@ -259,6 +259,15 @@
 
   .contacts__list {
     grid-template-columns: 1fr;
+  }
+
+  .contacts__intro {
+    text-align: center;
+  }
+
+  .contacts__panelText {
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .contactsCard {
