@@ -53,7 +53,7 @@ export default function Experience() {
   }, []);
 
   return (
-    <section id="experience" className="experience">
+    <section id="experience" className="section-frame experience">
       <div className="experience__ambient experience__ambient--one" />
       <div className="experience__ambient experience__ambient--two" />
 
@@ -72,7 +72,7 @@ export default function Experience() {
           </p>
         </div>
 
-        <div className="experience__summary">
+        <div className="experience__summary section-canon">
           <div className="experienceStat">
             <span className="experienceStat__value">5+</span>
             <span className="experienceStat__label">лет в разработке</span>
@@ -89,10 +89,10 @@ export default function Experience() {
           </div>
         </div>
 
-        <div className="experience__panel">
+        <div className="experience__panel section-canon">
           <div className="experience__panelGlow" />
 
-          <div className="experience__list">
+          <div className="experience__list section-canon__intro">
             {experience.map((item) => {
               const isActive = item.id === activeId;
 
@@ -120,7 +120,7 @@ export default function Experience() {
             })}
           </div>
 
-          <div className="experience__detailsCol">
+          <div className="experience__detailsCol section-canon__body">
             <AnimatePresence mode="wait">
               {activeItem && (
                 <motion.div

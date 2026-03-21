@@ -68,7 +68,7 @@ export default function Contacts() {
   };
 
   return (
-    <section id="contacts" className="contacts">
+    <section id="contacts" className="section-frame contacts">
       <div className="contacts__ambient contacts__ambient--one" />
       <div className="contacts__ambient contacts__ambient--two" />
 
@@ -88,10 +88,10 @@ export default function Contacts() {
           </p>
         </div>
 
-        <div className="contacts__panel">
+        <div className="contacts__panel section-canon">
           <div className="contacts__panelGlow" />
 
-          <div className="contacts__intro">
+          <div className="contacts__intro section-canon__intro">
             <span className="contacts__badge">Available for work</span>
 
             <h3 className="contacts__panelTitle">
@@ -104,7 +104,7 @@ export default function Contacts() {
             </p>
           </div>
 
-          <div className="contacts__list">
+          <div className="contacts__list section-canon__body">
             {contacts.map((item) => {
               const Icon = item.icon;
               const isCopied = copied === item.title;

@@ -74,7 +74,7 @@ export default function Skills() {
   };
 
   return (
-    <section id="skills" className="page-section skills">
+    <section id="skills" className="page-section section-frame skills">
       <div className="skills__bg" />
       <div className="skills__glow skills__glow--one" />
       <div className="skills__glow skills__glow--two" />
@@ -92,8 +92,8 @@ export default function Skills() {
             </h2>
           </div>
 
-          <div className="skills__layout">
-            <div className="skills__list">
+          <div className="skills__layout section-canon">
+            <div className="skills__list section-canon__intro">
               {skillsData.map((skill, index) => {
                 const isActive = skill.id === activeId;
 
@@ -119,7 +119,7 @@ export default function Skills() {
             </div>
 
             <div
-              className="skillsPreview"
+              className="skillsPreview section-canon__body"
               onMouseMove={handleMove}
               style={
                 {

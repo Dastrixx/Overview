@@ -1,11 +1,52 @@
 .hero {
+  --hero-grid-left: minmax(0, 1.618fr);
+  --hero-grid-right: minmax(320px, 1fr);
+  --hero-canon-shift: clamp(12px, 2.8vw, 42px);
+  --hero-canon-gutter: clamp(24px, 4vw, 56px);
+
   position: relative;
   overflow: hidden;
-
   min-height: calc(100vh - var(--header-height));
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: clamp(24px, 4vw, 56px);
+  border: 1px solid color-mix(in srgb, var(--color-primary) 10%, transparent);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 38.2% 100%, 0 61.8%);
+  opacity: 0.26;
+  pointer-events: none;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0,
+      transparent calc(38.2% - 0.5px),
+      color-mix(in srgb, var(--color-primary) 10%, transparent) calc(38.2% - 0.5px),
+      color-mix(in srgb, var(--color-primary) 10%, transparent) calc(38.2% + 0.5px),
+      transparent calc(38.2% + 0.5px),
+      transparent 100%
+    ),
+    linear-gradient(
+      180deg,
+      transparent 0,
+      transparent calc(61.8% - 0.5px),
+      color-mix(in srgb, var(--color-primary) 8%, transparent) calc(61.8% - 0.5px),
+      color-mix(in srgb, var(--color-primary) 8%, transparent) calc(61.8% + 0.5px),
+      transparent calc(61.8% + 0.5px),
+      transparent 100%
+    );
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 .hero__bg {
@@ -55,17 +96,23 @@
   animation-delay: 1.5s;
 }
 
+.hero__viewport {
+  width: 100%;
+  padding: clamp(36px, 5vw, 72px) 0;
+}
+
 .hero__inner {
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+  grid-template-columns: var(--hero-grid-left) var(--hero-grid-right);
   align-items: center;
-  gap: 48px;
+  gap: var(--hero-canon-gutter);
 }
 
 .hero__left {
-  max-width: 720px;
+  max-width: min(42rem, 100%);
+  padding-right: var(--hero-canon-shift);
 }
 
 .hero__eyebrow {
@@ -88,9 +135,10 @@
 .hero__title {
   margin: 0 0 20px;
   font-size: clamp(42px, 6vw, 76px);
-  line-height: 0.98;
-  letter-spacing: -0.04em;
-  max-width: 820px;
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+  max-width: 11ch;
+  text-wrap: balance;
 }
 
 .hero__titleAccent {
@@ -100,10 +148,10 @@
 }
 
 .hero__text {
-  max-width: 640px;
+  max-width: 54ch;
   margin: 0 0 30px;
-  font-size: 18px;
-  line-height: 1.7;
+  font-size: clamp(16px, 1.5vw, 19px);
+  line-height: 1.72;
   color: var(--color-text-secondary);
 }
 
@@ -149,6 +197,13 @@
 
 .hero__right {
   position: relative;
+  width: min(100%, 36rem);
+  justify-self: end;
+  margin-top: clamp(28px, 6vh, 72px);
+}
+
+.heroCardWrap {
+  position: relative;
 }
 
 .heroCard {
@@ -166,8 +221,12 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(16px);
   transform: perspective(1200px) rotateY(-8deg) rotateX(4deg);
+  transform-origin: 38.2% 61.8%;
   animation: heroCardFloat 6s ease-in-out infinite;
 }
+
+.heroCard__inner { display: block; }
+.heroCard__face { display: block; }
 
 .heroCard__top {
   display: flex;
@@ -181,17 +240,9 @@
   border-radius: 50%;
 }
 
-.heroCard__dot--red {
-  background: #ff5f57;
-}
-
-.heroCard__dot--yellow {
-  background: #febc2e;
-}
-
-.heroCard__dot--green {
-  background: #28c840;
-}
+.heroCard__dot--red { background: #ff5f57; }
+.heroCard__dot--yellow { background: #febc2e; }
+.heroCard__dot--green { background: #28c840; }
 
 .heroCard__body {
   display: grid;
@@ -216,24 +267,10 @@
   animation: pulseLine 3.2s ease-in-out infinite;
 }
 
-.heroCard__line--1 {
-  width: 72%;
-}
-
-.heroCard__line--2 {
-  width: 90%;
-  animation-delay: 0.2s;
-}
-
-.heroCard__line--3 {
-  width: 64%;
-  animation-delay: 0.4s;
-}
-
-.heroCard__line--4 {
-  width: 82%;
-  animation-delay: 0.6s;
-}
+.heroCard__line--1 { width: 72%; }
+.heroCard__line--2 { width: 90%; animation-delay: 0.2s; }
+.heroCard__line--3 { width: 64%; animation-delay: 0.4s; }
+.heroCard__line--4 { width: 82%; animation-delay: 0.6s; }
 
 .heroCard__stats {
   display: grid;
@@ -292,142 +329,36 @@
   animation-delay: 0.5s;
 }
 
-.hero__reveal {
-  opacity: 0;
-  transform: translateY(26px);
-  animation: revealUp 0.8s ease forwards;
-}
+.hero__reveal { opacity: 0; transform: translateY(26px); animation: revealUp 0.8s ease forwards; }
+.hero__reveal--delay1 { animation-delay: 0.12s; }
+.hero__reveal--delay2 { animation-delay: 0.26s; }
+.hero__reveal--delay3 { animation-delay: 0.4s; }
+.hero__reveal--delay4 { animation-delay: 0.55s; }
 
-.hero__reveal--delay1 {
-  animation-delay: 0.12s;
-}
-
-.hero__reveal--delay2 {
-  animation-delay: 0.26s;
-}
-
-.hero__reveal--delay3 {
-  animation-delay: 0.4s;
-}
-
-.hero__reveal--delay4 {
-  animation-delay: 0.55s;
-}
-
-@keyframes revealUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+@keyframes revealUp { to { opacity: 1; transform: translateY(0); } }
 
 @keyframes heroCardFloat {
-  0% {
-    transform: perspective(1200px) rotateY(-8deg) rotateX(4deg) translateY(0);
-  }
-  50% {
-    transform: perspective(1200px) rotateY(-6deg) rotateX(3deg) translateY(-10px);
-  }
-  100% {
-    transform: perspective(1200px) rotateY(-8deg) rotateX(4deg) translateY(0);
-  }
+  0% { transform: perspective(1200px) rotateY(-8deg) rotateX(4deg) translateY(0); }
+  50% { transform: perspective(1200px) rotateY(-6deg) rotateX(3deg) translateY(-10px); }
+  100% { transform: perspective(1200px) rotateY(-8deg) rotateX(4deg) translateY(0); }
 }
 
 @keyframes floatingBadge {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-  100% {
-    transform: translateY(0);
-  }
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
 }
 
 @keyframes heroOrbFloat {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(12px, -18px, 0) scale(1.05);
-  }
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(12px, -18px, 0) scale(1.05); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
 }
 
 @keyframes pulseLine {
   0%,
-  100% {
-    opacity: 0.65;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-@media (max-width: 1100px) {
-  .hero__inner {
-    grid-template-columns: 1fr;
-    gap: 34px;
-  }
-
-  .hero__right {
-    max-width: 680px;
-  }
-
-  .heroCard {
-    transform: none;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero {
-    min-height: auto;
-    padding: 92px 0 64px;
-  }
-
-  .hero__title {
-    font-size: clamp(38px, 10vw, 54px);
-  }
-
-  .hero__text {
-    font-size: 16px;
-  }
-
-  .heroCard__stats {
-    grid-template-columns: 1fr;
-  }
-
-  .heroFloating--two {
-    left: 10px;
-    bottom: -12px;
-  }
-}
-
-@media (max-width: 520px) {
-  .hero {
-    padding: 82px 0 52px;
-  }
-
-  .hero__actions {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .hero__button {
-    width: 100%;
-  }
-
-  .heroCard {
-    padding: 14px;
-    border-radius: 20px;
-  }
-
-  .heroFloating {
-    display: none;
-  }
+  100% { opacity: 0.65; }
+  50% { opacity: 1; }
 }
 
 .hero__stack {
@@ -436,9 +367,9 @@
   flex-wrap: wrap;
   gap: 10px;
   isolation: isolate;
+  max-width: 42rem;
 }
 
-/* мягкая техно-сетка на фоне */
 .hero__stack::before {
   content: "";
   position: absolute;
@@ -462,7 +393,6 @@
   mask-image: radial-gradient(circle at center, black 35%, transparent 100%);
 }
 
-/* мягкое свечение под блоком */
 .hero__stack::after {
   content: "";
   position: absolute;
@@ -498,177 +428,129 @@
   font-size: 14px;
   font-weight: 600;
   backdrop-filter: blur(10px);
-
   transition:
     transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.3s ease,
     border-color 0.3s ease,
     color 0.3s ease,
     background 0.3s ease;
-
   animation: techDrift 5.2s ease-in-out infinite;
   will-change: transform;
 }
 
-/* разная "жизнь" у чипов */
-.hero__chip:nth-child(2n) {
-  animation-duration: 6s;
-}
-
-.hero__chip:nth-child(3n) {
-  animation-duration: 6.8s;
-}
-
-.hero__chip:nth-child(1) {
-  animation-delay: 0s;
-}
-
-.hero__chip:nth-child(2) {
-  animation-delay: 0.35s;
-}
-
-.hero__chip:nth-child(3) {
-  animation-delay: 0.7s;
-}
-
-.hero__chip:nth-child(4) {
-  animation-delay: 1.05s;
-}
-
-.hero__chip:nth-child(5) {
-  animation-delay: 1.4s;
-}
-
-.hero__chip:nth-child(6) {
-  animation-delay: 1.75s;
-}
-
-/* скан-линия внутри чипа */
-.hero__chip::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(
-    115deg,
-    transparent 0%,
-    transparent 38%,
-    color-mix(in srgb, var(--color-primary) 0%, white 100%) 48%,
-    color-mix(in srgb, var(--color-primary) 38%, transparent) 50%,
-    color-mix(in srgb, var(--color-primary) 0%, white 100%) 52%,
-    transparent 62%,
-    transparent 100%
-  );
-  opacity: 0;
-  transform: translateX(-140%);
-  pointer-events: none;
-}
-
-/* тонкий внутренний блик */
-.hero__chip::after {
-  content: "";
-  position: absolute;
-  inset: 1px;
-  border-radius: inherit;
-  pointer-events: none;
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, white 14%, transparent),
-    transparent 55%
-  );
-  opacity: 0.55;
-}
-
-/* при наведении на весь стек идет волна скана */
-.hero__stack:hover .hero__chip::before {
-  animation: techScan 1.25s linear forwards;
-  opacity: 1;
-}
-
-.hero__stack:hover .hero__chip:nth-child(2)::before {
-  animation-delay: 0.08s;
-}
-
-.hero__stack:hover .hero__chip:nth-child(3)::before {
-  animation-delay: 0.16s;
-}
-
-.hero__stack:hover .hero__chip:nth-child(4)::before {
-  animation-delay: 0.24s;
-}
-
-.hero__stack:hover .hero__chip:nth-child(5)::before {
-  animation-delay: 0.32s;
-}
-
-.hero__stack:hover .hero__chip:nth-child(6)::before {
-  animation-delay: 0.4s;
-}
-
-/* общий hover по контейнеру */
-.hero__stack:hover .hero__chip {
-  border-color: color-mix(in srgb, var(--color-primary) 28%, var(--color-border));
-  color: var(--color-text);
-  box-shadow:
-    inset 0 1px 0 color-mix(in srgb, white 10%, transparent),
-    0 0 0 1px color-mix(in srgb, var(--color-primary) 10%, transparent),
-    0 8px 24px color-mix(in srgb, var(--color-primary) 12%, transparent);
-}
-
-/* hover по конкретному чипу */
-.hero__chip:hover {
-  transform: translateY(-6px) scale(1.04) !important;
-  border-color: color-mix(in srgb, var(--color-primary) 55%, white 10%);
-  background: color-mix(in srgb, var(--color-surface) 84%, var(--color-primary) 16%);
-  color: var(--color-text);
-  box-shadow:
-    inset 0 1px 0 color-mix(in srgb, white 16%, transparent),
-    0 0 0 1px color-mix(in srgb, var(--color-primary) 35%, transparent),
-    0 0 20px color-mix(in srgb, var(--color-primary) 18%, transparent),
-    0 10px 30px color-mix(in srgb, var(--color-primary) 22%, transparent);
-}
+.hero__chip:nth-child(2n) { animation-duration: 6s; }
+.hero__chip:nth-child(3n) { animation-duration: 6.8s; }
 
 @keyframes techDrift {
-  0% {
-    transform: translate3d(0, 0, 0);
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@media (max-width: 1180px) {
+  .hero {
+    --hero-grid-left: minmax(0, 1.35fr);
+    --hero-grid-right: minmax(300px, 0.95fr);
   }
-  25% {
-    transform: translate3d(0, -2px, 0);
-  }
-  50% {
-    transform: translate3d(0, 1px, 0);
-  }
-  75% {
-    transform: translate3d(0, -1px, 0);
-  }
-  100% {
-    transform: translate3d(0, 0, 0);
+
+  .hero__left {
+    padding-right: clamp(8px, 2vw, 24px);
   }
 }
 
-@keyframes techScan {
-  0% {
-    opacity: 0;
-    transform: translateX(-140%);
+@media (max-width: 1100px) {
+  .hero::before,
+  .hero::after {
+    opacity: 0.28;
   }
-  12% {
-    opacity: 1;
+
+  .hero__inner {
+    grid-template-columns: 1fr;
+    gap: 34px;
   }
-  100% {
-    opacity: 0;
-    transform: translateX(140%);
+
+  .hero__left {
+    max-width: 100%;
+    padding-right: 0;
+  }
+
+  .hero__right {
+    width: min(100%, 680px);
+    justify-self: start;
+    margin-top: 0;
+  }
+
+  .heroCard {
+    transform: none;
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .hero__chip,
-  .hero__chip::before {
-    animation: none !important;
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
   }
 
-  .hero__chip,
-  .hero__stack::before,
-  .hero__stack::after {
-    transition: none;
+  .hero::before,
+  .hero::after {
+    display: none;
+  }
+
+  .hero__viewport {
+    padding: 48px 0 28px;
+  }
+
+  .hero__title {
+    font-size: clamp(38px, 10vw, 54px);
+    max-width: 10ch;
+  }
+
+  .hero__text {
+    font-size: 16px;
+  }
+
+  .heroCard__stats {
+    grid-template-columns: 1fr;
+  }
+
+  .heroFloating--two {
+    left: 10px;
+    bottom: -12px;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero__viewport {
+    padding: 34px 0 12px;
+  }
+
+  .hero__actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .hero__button {
+    width: 100%;
+  }
+
+  .hero__right {
+    width: 100%;
+  }
+
+  .heroCard {
+    padding: 14px;
+    border-radius: 20px;
+  }
+
+  .heroFloating {
+    display: none;
+  }
+
+  .hero__stack {
+    gap: 8px;
+  }
+
+  .hero__chip {
+    font-size: 13px;
+    min-height: 34px;
+    padding: 0 12px;
   }
 }

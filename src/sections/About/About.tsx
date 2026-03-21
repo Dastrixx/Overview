@@ -20,10 +20,10 @@ const cards = [
 
 export default function About() {
   return (
-    <section className="page-section about">
+    <section id="about" className="page-section section-frame about">
       <div className="about__inner">
-        <div className="container about__container">
-          <div className="about__intro">
+        <div className="container about__container section-canon">
+          <div className="about__intro section-canon__intro">
             <span className="about__label">Обо мне</span>
 
             <h2 className="about__title">
@@ -38,7 +38,7 @@ export default function About() {
             </p>
           </div>
 
-          <div className="about__cards">
+          <div className="about__cards section-canon__body">
             {cards.map((card) => (
               <article key={card.number} className="aboutCard">
                 <span className="aboutCard__number">{card.number}</span>

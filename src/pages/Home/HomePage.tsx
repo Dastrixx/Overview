@@ -8,7 +8,7 @@ import Contacts from "@/sections/Contacts/Contacts";
 
 export default function HomePage() {
   return (
-    <>
+    <div className="page-flow">
       <Hero />
       <About />
       <Skills />
@@ -16,6 +16,6 @@ export default function HomePage() {
       {/* <Projects /> */}
       <Experience />
       <Contacts />
-    </>
+    </div>
   );
 }

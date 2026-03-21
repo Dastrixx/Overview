@@ -1,6 +1,7 @@
 :root {
-  --container-width: 1240px;
+  --container-width: 1280px;
   --container-padding: 24px;
+  --container-canon-measure: minmax(0, 1.618fr) minmax(0, 1fr);
 
   --radius-sm: 10px;
   --radius-md: 16px;
